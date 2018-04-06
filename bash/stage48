@@ -1,0 +1,37 @@
+#!/bin/bash
+thread=$(grep processor /proc/cpuinfo | wc -l)
+let "thread*=2"
+GETOPT=`getopt -o j: --long job: -n 'exit' -- "$@"`
+eval set -- "$GETOPT"
+while true ; do
+	case "$1" in
+		-j|--job) thread="$2" ; shift 2 ;;
+		--) shift ; break ;;
+		*) exit 1 ;;
+	esac
+done
+Request(){
+	Do(){
+		echo "$2: $(./stg48 $1 $2)"
+	}
+	export -f Do
+	parallel -j "$thread" -k Do ::: "$1" :::: <(seq $2) > "../normal/$3"
+	echo "$2 URL(s) written in ../normal/$3"
+}
+for groupName in snh48 bej48 gnz48 shy48 ckg48 ; do
+	case "$groupName" in
+		snh48) filename="0001-SNH48.txt" ;;
+		bej48) filename="2001-BEJ48.txt" ;;
+		gnz48) filename="3001-GNZ48.txt" ;;
+		shy48) filename="6001-SHY48.txt" ;;
+		ckg48) filename="8001-CKG48.txt" ;;
+		*) exit 1 ;;
+	esac
+	if [ $groupName == "snh48" ] ; then
+		index=http://zhibo.ckg48.com
+	else
+		index=http://live.$groupName.com
+	fi
+	endID=$(curl -s $index | grep -Po '/Index/invedio/id/\d+' | grep -Po '\d+' | sort -u | tail -1)
+	Request "$groupName" "$endID" "$filename"
+done
