@@ -339,3 +339,4 @@
 339: http://ts.snh48.com/chaoqing/3001/20180406203553-playlist.m3u8?beginTime=20180406211000&endTime=20180407001000
 340: http://ts.snh48.com/chaoqing/3001/20180407123711-playlist.m3u8?beginTime=20180407130000&endTime=20180407164900
 341: http://ts.snh48.com/chaoqing/3001/20180407173942-playlist.m3u8?beginTime=20180407180000&endTime=20180407220400
+342: http://ts.snh48.com/chaoqing/3001/20180408182923-playlist.m3u8?beginTime=20180408190000&endTime=20180408215700

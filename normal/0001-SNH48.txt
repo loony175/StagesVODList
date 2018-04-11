@@ -529,3 +529,5 @@
 529: http://ts.snh48.com/chaoqing/9999/20180405134357-playlist.m3u8?beginTime=20180405140000&endTime=20180405170400
 530: http://ts.snh48.com/chaoqing/9999/20180405183902-playlist.m3u8?beginTime=20180405190000&endTime=20180405214200
 531: http://ts.snh48.com/chaoqing/9999/20180406190456-playlist.m3u8?beginTime=20180406193000&endTime=20180406220500
+532: http://ts.snh48.com/vod/z1.chaoqing.9999/20180404/20180404191820.mp4/playlist.m3u8
+533: http://ts.snh48.com/chaoqing/9999/20180411190208-playlist.m3u8?beginTime=20180411193200&endTime=20180411223200
