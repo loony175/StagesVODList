@@ -563,3 +563,16 @@
 563: http://ts.snh48.com/chaoqing/9999/20180430185034-playlist.m3u8?beginTime=20180430190000&endTime=20180430215800
 564: http://ts.snh48.com/chaoqing/9999/20180501134722-playlist.m3u8?beginTime=20180501140000&endTime=20180501173900
 565: http://ts.snh48.com/chaoqing/9999/20180501175220-playlist.m3u8?beginTime=20180501175000&endTime=20180501190000
+566: http://ts.snh48.com/chaoqing/ninth/20180504164932-playlist.m3u8?beginTime=20180504170000&endTime=20180504174700
+567: http://ts.snh48.com/chaoqing/9999/20180504190801-playlist.m3u8?beginTime=20180504193000&endTime=20180504222600
+568: http://ts.snh48.com/chaoqing/9999/20180505165722-playlist.m3u8?beginTime=20180505170000&endTime=20180505174300
+569: http://ts.snh48.com/chaoqing/9999/20180505184958-playlist.m3u8?beginTime=20180505190000&endTime=20180505221500
+570: http://ts.snh48.com/chaoqing/9999/20180506170107-playlist.m3u8?beginTime=20180506170000&endTime=20180506175000
+571: http://ts.snh48.com/chaoqing/9999/20180506190131-playlist.m3u8?beginTime=20180506191000&endTime=20180506225000
+572: http://ts.snh48.com/chaoqing/9999/20180509190216-playlist.m3u8?beginTime=20180509193000&endTime=20180509220000
+573: http://ts.snh48.com/chaoqing/9999/20180510190444-playlist.m3u8?beginTime=20180510193000&endTime=20180510220900
+574: http://ts.snh48.com/chaoqing/ninth/20180510164811-playlist.m3u8?beginTime=20180510170000&endTime=20180510175700
+575: http://ts.snh48.com/chaoqing/9999/20180512183552-playlist.m3u8?beginTime=20180512190000&endTime=20180512213400
+576: http://ts.snh48.com/chaoqing/9999/20180513143008-playlist.m3u8?beginTime=20180513143000&endTime=20180513171000
+577: http://ts.snh48.com/chaoqing/9999/20180513174303-playlist.m3u8?beginTime=20180513174000&endTime=20180513184500
+578: http://ts.snh48.com/chaoqing/9999/20180513174303-playlist.m3u8?beginTime=20180513193000&endTime=20180513212400
