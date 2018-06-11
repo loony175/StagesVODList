@@ -1,6 +1,6 @@
 #!/bin/bash
 thread=$(grep processor /proc/cpuinfo | wc -l)
-let "thread*=2"
+let "thread*=4"
 GETOPT=`getopt -o j: --long job: -n 'exit' -- "$@"`
 eval set -- "$GETOPT"
 while true ; do
