@@ -2,6 +2,7 @@
 
 import argparse
 import functools
+import logging
 import multiprocessing
 import pathlib
 import re
@@ -24,9 +25,9 @@ def get_review_url(group,id):
                     review_url=''
                 break
             else:
-                print('[%s] %d: Empty response'%(real_group_name[group],id))
+                logging.warning('[%s] %d: Empty response'%(real_group_name[group],id))
         else:
-            print('[%s] %d: 502 Bad Gateway'%(real_group_name[group],id))
+            logging.warning('[%s] %d: 502 Bad Gateway'%(real_group_name[group],id))
     return '%d: %s'%(id,review_url)
 
 def main():
@@ -34,6 +35,7 @@ def main():
     add=parser.add_argument
     add('-j','--jobs',type=int,default=32)
     args=parser.parse_args()
+    logging.basicConfig(level=logging.INFO,format='%(levelname)s: %(message)s')
     file={'snh48':'0001-SNH48.txt','bej48':'2001-BEJ48.txt','gnz48':'3001-GNZ48.txt','shy48':'6001-SHY48.txt','ckg48':'8001-CKG48.txt'}
     real_group_name={'snh48':'SNH48','bej48':'BEJ48','gnz48':'GNZ48','shy48':'SHY48','ckg48':'CKG48'}
     dir=pathlib.Path('normal')
@@ -53,9 +55,9 @@ def main():
                     end_id=max([int(id) for id in re.findall('/Index/invedio/id/(?P<ids>\d+)',resp.text)])
                     break
                 else:
-                    print('[%s] Index: Empty response'%real_group_name[group_name])
+                    logging.warning('[%s] Index: Empty response'%real_group_name[group_name])
             else:
-                print('[%s] Index: 502 Bad Gateway'%real_group_name[group_name])
+                logging.warning('[%s] Index: 502 Bad Gateway'%real_group_name[group_name])
         work=functools.partial(get_review_url,group_name)
         pool=multiprocessing.Pool(args.jobs)
         results=pool.map(work,[id for id in range(1,end_id+1)])
@@ -66,7 +68,7 @@ def main():
         for line in results:
             f.write('%s\n'%line)
         f.close()
-        print('[%s] %d URLs written in %s'%(real_group_name[group_name],end_id,output))
+        logging.info('[%s] %d URLs written in %s'%(real_group_name[group_name],end_id,output))
 
 if __name__=='__main__':
     main()
