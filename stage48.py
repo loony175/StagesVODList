@@ -17,15 +17,15 @@ def get_review_url(group,id):
         url='http://live.%s.com%s'%(group,path)
     while True:
         resp=requests.get(url)
-        if re.match('^<Response\s\[(?P<code>.*)\]>$',str(resp)).group('code')=='200':
-            if len(resp.text)>16:
+        if resp.status_code==200:
+            if len(resp.text)>=36996:
                 try:
                     review_url=re.findall('https?://.*\.m3u8[^"]*',resp.text)[0]
                 except IndexError:
                     review_url=''
                 break
             else:
-                logging.warning('[%s] %d: Empty response'%(real_group_name[group],id))
+                logging.warning('[%s] %d: Incomplete response'%(real_group_name[group],id))
         else:
             logging.warning('[%s] %d: 502 Bad Gateway'%(real_group_name[group],id))
     return '%d: %s'%(id,review_url)
@@ -50,17 +50,17 @@ def main():
             url='http://live.%s.com'%group_name
         while True:
             resp=requests.get(url)
-            if re.match('^<Response\s\[(?P<code>.*)\]>$',str(resp)).group('code')=='200':
+            if resp.status_code==200:
                 if len(resp.text)>16:
                     end_id=max([int(id) for id in re.findall('/Index/invedio/id/(?P<ids>\d+)',resp.text)])
                     break
                 else:
-                    logging.warning('[%s] Index: Empty response'%real_group_name[group_name])
+                    logging.warning('[%s] Index: Incomplete response'%real_group_name[group_name])
             else:
                 logging.warning('[%s] Index: 502 Bad Gateway'%real_group_name[group_name])
         work=functools.partial(get_review_url,group_name)
         pool=multiprocessing.Pool(args.jobs)
-        results=pool.map(work,[id for id in range(1,end_id+1)])
+        results=pool.map(work,range(1,end_id+1))
         pool.close()
         pool.join()
         output=dir/file[group_name]
