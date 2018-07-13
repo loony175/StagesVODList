@@ -178,7 +178,7 @@
 178: http://ts.snh48.com/vod/z1.chaoqing.3001/20170910/59a6701c0cf2abe871c6ab98.mp4/playlist.m3u8
 179: http://ts.snh48.com/vod/z1.chaoqing.3001/20170915/59afc08f0cf2eb365e35b4f0.mp4/playlist.m3u8
 180: http://ts.snh48.com/vod/z1.chaoqing.3001/20170916/59afc0ee0cf2eb365e35b4f1.mp4/playlist.m3u8
-181: 
+181: http://ts.snh48.com/vod/z1.chaoqing.3001/20170916/59afc1180cf2eb365e35b4f2.mp4/playlist.m3u8
 182: http://ts.snh48.com/vod/z1.chaoqing.3001/20170917/59afc1490cf2eb365e35b4f3.mp4/playlist.m3u8
 183: http://ts.snh48.com/vod/z1.chaoqing.3001/20170917/59afc1ab0cf2eb365e35b4f4.mp4/playlist.m3u8
 184: http://ts.snh48.com/vod/z1.chaoqing.3001/20170922/59b8d4f60cf2c17cbcba1320.mp4/playlist.m3u8
@@ -254,7 +254,7 @@
 254: http://ts.snh48.com/chaoqing/3001/20171214190844-playlist.m3u8?beginTime=20171214193000&endTime=20171214222600
 255: http://ts.snh48.com/chaoqing/3001/20171215185743-playlist.m3u8?beginTime=20171215193000&endTime=20171215220600
 256: http://ts.snh48.com/chaoqing/3001/20171216115634-playlist.m3u8?beginTime=20171216120000&endTime=20171216131200
-257: 
+257: http://ts.snh48.com/chaoqing/3001/20171216135530-playlist.m3u8?beginTime=20171216140000&endTime=20171216172600
 258: http://ts.snh48.com/chaoqing/3001/20171216135530-playlist.m3u8?beginTime=20171216174000&endTime=20171216184500
 259: http://ts.snh48.com/chaoqing/3001/20171216191946-playlist.m3u8?beginTime=20171216191500&endTime=20171216230000
 260: http://ts.snh48.com/chaoqing/3001/20171217115816-playlist.m3u8?beginTime=20171217122300&endTime=20171217132300
