@@ -2,6 +2,7 @@
 
 import argparse
 import functools
+import json
 import logging
 import multiprocessing
 import pathlib
@@ -28,7 +29,7 @@ def get_review_url(group,id):
                 logging.warning('[%s] %d: Incomplete response'%(real_group_name[group],id))
         else:
             logging.warning('[%s] %d: 502 Bad Gateway'%(real_group_name[group],id))
-    return '%d: %s'%(id,review_url)
+    return id,review_url
 
 def main():
     parser=argparse.ArgumentParser()
@@ -36,13 +37,10 @@ def main():
     add('-j','--jobs',type=int,default=32)
     args=parser.parse_args()
     logging.basicConfig(level=logging.INFO,format='%(levelname)s: %(message)s')
-    file={'snh48':'0001-SNH48.txt','bej48':'2001-BEJ48.txt','gnz48':'3001-GNZ48.txt','shy48':'6001-SHY48.txt','ckg48':'8001-CKG48.txt'}
+    file={'snh48':'0001-SNH48.json','bej48':'2001-BEJ48.json','gnz48':'3001-GNZ48.json','shy48':'6001-SHY48.json','ckg48':'8001-CKG48.json'}
     real_group_name={'snh48':'SNH48','bej48':'BEJ48','gnz48':'GNZ48','shy48':'SHY48','ckg48':'CKG48'}
     dir=pathlib.Path('normal')
-    try:
-        dir.mkdir()
-    except FileExistsError:
-        pass
+    dir.mkdir(exist_ok=True)
     for group_name in ['snh48','bej48','gnz48','shy48','ckg48']:
         if group_name=='snh48':
             url='http://zhibo.ckg48.com'
@@ -63,10 +61,12 @@ def main():
         results=pool.map(work,range(1,end_id+1))
         pool.close()
         pool.join()
+        data={}
+        for id,review_url in results:
+            data[str(id)]=review_url
         output=dir/file[group_name]
         f=open(output,'w')
-        for line in results:
-            f.write('%s\n'%line)
+        f.write(json.dumps(data,indent=2))
         f.close()
         logging.info('[%s] %d URLs written in %s'%(real_group_name[group_name],end_id,output))
 
