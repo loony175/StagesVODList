@@ -67,6 +67,7 @@ def main():
         output=dir/file[group_name]
         f=open(output,'w')
         f.write(json.dumps(data,indent=2))
+        f.write('\n')
         f.close()
         logging.info('[%s] %d URLs written in %s'%(real_group_name[group_name],end_id,output))
 
