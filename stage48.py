@@ -27,8 +27,10 @@ def get_review_url(group,id):
                 break
             else:
                 logging.warning('[%s] %d: Incomplete response'%(real_group_name[group],id))
-        else:
+        elif resp.status_code==502:
             logging.warning('[%s] %d: 502 Bad Gateway'%(real_group_name[group],id))
+        else:
+            logging.warning('[%s] %d: HTTP status code not 200 OK'%(real_group_name[group],id))
     return id,review_url
 
 def main():
@@ -54,8 +56,10 @@ def main():
                     break
                 else:
                     logging.warning('[%s] Index: Incomplete response'%real_group_name[group_name])
-            else:
+            elif resp.status_code==502:
                 logging.warning('[%s] Index: 502 Bad Gateway'%real_group_name[group_name])
+            else:
+                logging.warning('[%s] Index: HTTP status code not 200 OK'%real_group_name[group_name])
         work=functools.partial(get_review_url,group_name)
         pool=multiprocessing.Pool(args.jobs)
         results=pool.map(work,range(1,end_id+1))
