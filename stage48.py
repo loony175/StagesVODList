@@ -17,7 +17,12 @@ def get_review_url(group,id):
     else:
         url='http://live.%s.com%s'%(group,path)
     while True:
-        resp=requests.get(url)
+        while True:
+            try:
+                resp=requests.get(url)
+                break
+            except Exception as e:
+                print(e)
         if resp.status_code==200:
             if len(resp.text)>=36996:
                 try:
@@ -49,7 +54,12 @@ def main():
         else:
             url='http://live.%s.com'%group_name
         while True:
-            resp=requests.get(url)
+            while True:
+                try:
+                    resp=requests.get(url)
+                    break
+                except Exception as e:
+                    print(e)
             if resp.status_code==200:
                 if len(resp.text)>16:
                     end_id=max([int(id) for id in re.findall('/Index/invedio/id/(?P<ids>\d+)',resp.text)])
