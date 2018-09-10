@@ -22,7 +22,7 @@ def get_review_url(group,id):
                 resp=requests.get(url)
                 break
             except Exception as e:
-                print(e)
+                logging.warning('[%s] %d: %s'%(real_group_name[group],id,e))
         if resp.status_code==200:
             if len(resp.text)>=36996:
                 try:
@@ -31,11 +31,12 @@ def get_review_url(group,id):
                     review_url=''
                 break
             else:
-                logging.warning('[%s] %d: Incomplete response'%(real_group_name[group],id))
+                message='Incomplete response'
         elif resp.status_code==502:
-            logging.warning('[%s] %d: 502 Bad Gateway'%(real_group_name[group],id))
+            message='502 Bad Gateway'
         else:
-            logging.warning('[%s] %d: HTTP status code not 200 OK'%(real_group_name[group],id))
+            message='HTTP status code not 200 OK'
+        logging.warning('[%s] %d: %s'%(real_group_name[group],id,message))
     return id,review_url
 
 def main():
@@ -59,17 +60,18 @@ def main():
                     resp=requests.get(url)
                     break
                 except Exception as e:
-                    print(e)
+                    logging.warning('[%s] Index: %s'%(real_group_name[group],e))
             if resp.status_code==200:
                 if len(resp.text)>16:
                     end_id=max([int(id) for id in re.findall('/Index/invedio/id/(?P<ids>\d+)',resp.text)])
                     break
                 else:
-                    logging.warning('[%s] Index: Incomplete response'%real_group_name[group_name])
+                    message='Incomplete response'
             elif resp.status_code==502:
-                logging.warning('[%s] Index: 502 Bad Gateway'%real_group_name[group_name])
+                message='502 Bad Gateway'
             else:
-                logging.warning('[%s] Index: HTTP status code not 200 OK'%real_group_name[group_name])
+                message='HTTP status code not 200 OK'
+            logging.warning('[%s] Index: %s'%(real_group_name[group],message))
         work=functools.partial(get_review_url,group_name)
         pool=multiprocessing.Pool(args.jobs)
         results=pool.map(work,range(1,end_id+1))
