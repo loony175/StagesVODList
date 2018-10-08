@@ -63,7 +63,7 @@ def main():
                     logging.warning('[%s] Index: %s'%(real_group_name[group],e))
             if resp.status_code==200:
                 if len(resp.text)>16:
-                    end_id=max([int(id) for id in re.findall('/Index/invedio/id/(?P<ids>\d+)',resp.text)])
+                    end_id=max([int(id) for id in re.findall('/Index/invedio/id/(\d+)',resp.text)])
                     break
                 else:
                     message='Incomplete response'
