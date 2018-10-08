@@ -245,7 +245,7 @@
   "244": "http://ts.snh48.com/chaoqing/3001/20171203134318-playlist.m3u8?beginTime=20171203140000&endTime=20171203164700",
   "245": "http://ts.snh48.com/chaoqing/3001/20171203183033-playlist.m3u8?beginTime=20171203190000&endTime=20171203223200",
   "246": "http://ts.snh48.com/chaoqing/3001/20171207185209-playlist.m3u8?beginTime=20171207193000&endTime=20171207222200",
-  "247": "http://ts.snh48.com/gaoqing/3001/20171208183947-playlist.m3u8?beginTime=20171208193000&endTime=20171208221900';\r\n\t\t\t//console.log(vedio);\r\n\t\t\tvar username = '';\r\n\t\t\tvar uid = '';\r\n\t\t\tvar vedio_type = 'm3u8';\r\n\t\t\tvar sendtxt = ",
+  "247": "http://ts.snh48.com/chaoqing/3001/20171208183942-playlist.m3u8?beginTime=20171208193000&endTime=20171208221900",
   "248": "http://ts.snh48.com/chaoqing/3001/20171209120736-playlist.m3u8?beginTime=20171209120500&endTime=20171209130300",
   "249": "http://ts.snh48.com/chaoqing/3001/20171209134706-playlist.m3u8?beginTime=20171209140000&endTime=20171209180700",
   "250": "http://ts.snh48.com/chaoqing/3001/20171209190803-playlist.m3u8?beginTime=20171209190500&endTime=20171209225100",
