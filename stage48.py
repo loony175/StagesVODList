@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+import bs4
 import functools
 import json
 import logging
@@ -26,7 +27,7 @@ def get_review_url(group,id):
         if resp.status_code==200:
             if len(resp.text)>=36996:
                 try:
-                    review_url=re.findall('https?://.*\.m3u8[^"]*',resp.text)[0]
+                    review_url=bs4.BeautifulSoup(resp.text,'html.parser').find_all('input',id='chao_url')[0]['value']
                 except IndexError:
                     review_url=''
                 break
@@ -63,7 +64,12 @@ def main():
                     logging.warning('[%s] Index: %s'%(real_group_name[group],e))
             if resp.status_code==200:
                 if len(resp.text)>16:
-                    end_id=max([int(id) for id in re.findall('/Index/invedio/id/(\d+)',resp.text)])
+                    ids=[]
+                    for item in bs4.BeautifulSoup(resp.text,'html.parser').find_all('a',target='_blank'):
+                        m=re.match(r'^/Index/invedio/id/(?P<id>\d+)$',item['href'])
+                        if m:
+                            ids.append(int(m.group('id')))
+                    end_id=max(ids)
                     break
                 else:
                     message='Incomplete response'
