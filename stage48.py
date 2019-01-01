@@ -9,6 +9,7 @@ import multiprocessing
 import pathlib
 import re
 import requests
+from urllib import parse
 
 def get_review_url(group,id):
     real_group_name={'snh48':'SNH48','bej48':'BEJ48','gnz48':'GNZ48','shy48':'SHY48','ckg48':'CKG48'}
@@ -30,6 +31,8 @@ def get_review_url(group,id):
                     review_url=bs4.BeautifulSoup(resp.text,'html.parser').find_all('input',id='chao_url')[0]['value']
                 except IndexError:
                     review_url=''
+                if parse.urlparse(review_url).hostname=='ts.48.cn':
+                    review_url=review_url.replace('http://','https://')
                 break
             else:
                 message='Incomplete response'
